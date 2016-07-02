@@ -1,5 +1,7 @@
 import Ufo from './models/ufo'
 import View from './view'
+import $ from 'jquery'
+
 
 export default class Controller {
   constructor() {
@@ -8,10 +10,13 @@ export default class Controller {
     const v = this.view
     this.ufos = []
     // this.ufos.push(new Ufo({x:250,y:250,xV:0,yV:0}, 100, 50, '#f78303', 'the_sun'))
-    this.ufos.push(new Ufo({x:100,y:100,xV:35,yV:0 }, 100, 10, 'green', 'the_earth'))
-    this.ufos.push(new Ufo({x:400,y:100,xV:0,yV:35 }, 100, 10, 'green', 'the_earth2'))
-    this.ufos.push(new Ufo({x:400,y:400,xV:-35,yV:0 }, 100, 10, 'green', 'the_earth3'))
-    this.ufos.push(new Ufo({x:100,y:400,xV:0,yV:-35 }, 100, 10, 'green', 'the_earth4'))
+    let halfWidth = $('#draw-window').width()/2
+    let halfHeight = $('#draw-window').height()/2
+    console.log('halfHeight',halfHeight)
+    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight - 200,xV:35,yV:0 }, 100, 15, '#00effe', 'the_earth'))
+    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight - 200,xV:0,yV:35 }, 100, 15, '#00effe', 'the_earth2'))
+    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight + 200,xV:-35,yV:0 }, 100, 15, '#00effe', 'the_earth3'))
+    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight + 200,xV:0,yV:-35 }, 100, 15, '#00effe', 'the_earth4'))
 
     this.ufos.forEach(function(ufo){
       v.create(ufo)

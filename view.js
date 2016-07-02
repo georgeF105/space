@@ -15,6 +15,11 @@ export default class View {
     // console.log("rendering ufo:", model.name)
     // console.log("        X pos:", model.getXPosition())
     // console.log("        Y pos:", model.getYPosition())
-    $('#' + model.id).css({top: yPos, left: xPos})
+    if(xPos > $('#draw-window').width() || xPos < 0 || yPos > $('#draw-window').height() || yPos < 0){
+      $('#' + model.id).css({display: 'none'})
+    }
+    else{
+      $('#' + model.id).css({display: 'inital',top: yPos, left: xPos})
+    }
   }
 }
