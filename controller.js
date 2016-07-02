@@ -5,7 +5,7 @@ export default class Controller {
   constructor() {
     console.log("construct things")
     this.sun = new Ufo({x:250,y:250,xV:0,yV:0}, 100, 50, '#f78303', 'the_sun')
-    this.planet = new Ufo({x:250,y:230,xV:80,yV:0 }, 100, 10, 'green', 'the_earth')
+    this.planet = new Ufo({x:250,y:150,xV:45,yV:0 }, 100, 10, 'green', 'the_earth')
     this.planet2 = new Ufo({x:250,y:80,xV:45,yV:0 }, 100, 10, 'green', 'the_earth2')
     this.view = new View()
     this.view.create(this.sun)

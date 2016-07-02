@@ -25,31 +25,21 @@ export default class Ufo {
     let gAcel = (sun.mass * sun.GRAV_CONST) / (radius*radius)
 
     let angle = Math.atan(xDist/yDist)
-
+    if(yDist > 0){
+      angle = angle + Math.PI
+    }
     let xAcel = Math.sin(angle) * gAcel
     let yAcel = Math.cos(angle) * gAcel
-
+/*
     $('#data-1').text('xV:' + this.vector.xV)
     $('#data-2').text('yV:' + this.vector.yV)
     $('#data-3').text('xDist:' + xDist)
     $('#data-4').text('yDist:' + yDist)
     $('#data-5').text('angle:' + angle)
-
+*/
     const interval = (Date.now() - this.lastUpdated)/1000
-
-    if(yDist < 0){
-      this.vector.xV += xAcel*interval
-    }
-    else{
-      this.vector.xV -= xAcel*interval
-    }
-    if(yDist < 0){
-      this.vector.yV += yAcel*interval
-    }
-    else{
-      this.vector.yV -= yAcel*interval
-    }
-
+    this.vector.xV += xAcel*interval
+    this.vector.yV += yAcel*interval
     this.vector.x += (interval * this.vector.xV)
     this.vector.y += (interval * this.vector.yV)
     this.lastUpdated = Date.now()
