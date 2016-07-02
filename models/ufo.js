@@ -9,7 +9,7 @@ export default class Ufo {
     this.colour = colour
     this.name = name
     this.id = 'ufo-' + name
-    this.GRAV_CONST = 2500 //???
+    this.GRAV_CONST = 3000 //???
   }
   getXPosition(){
     return this.vector.x
@@ -17,26 +17,37 @@ export default class Ufo {
   getYPosition(){
     return this.vector.y
   }
-  refreshPosition(sun){
+  refreshPosition(ufos){
     // update position
-    let xDist = this.vector.x - sun.getXPosition()
-    let yDist = this.vector.y - sun.getYPosition()
-    let radius = Math.sqrt(xDist*xDist + yDist * yDist)
-    let gAcel = (sun.mass * sun.GRAV_CONST) / (radius*radius)
-
-    let angle = Math.atan(xDist/yDist)
-    if(yDist > 0){
-      angle = angle + Math.PI
+    const xPos = this.vector.x
+    const yPos = this.vector.y
+    let xAcel = 0
+    let yAcel = 0
+    //let ufo = ufos[0]
+    // ufos.forEach(function(ufo){
+    for(let i = 0; i < ufos.length; i++){
+      let ufo = ufos[i]
+      if(!(ufo.vector.x == xPos && ufo.vector.y == yPos)){
+        let xDist = xPos - ufo.getXPosition()
+        let yDist = yPos - ufo.getYPosition()
+        let radius = Math.sqrt(xDist*xDist + yDist * yDist)
+        let gAcel = (ufo.mass * ufo.GRAV_CONST) / (radius*radius)
+        let angle = Math.atan(xDist/yDist)
+        if(yDist > 0){
+          angle = angle + Math.PI
+        }
+        xAcel += Math.sin(angle) * gAcel
+        yAcel += Math.cos(angle) * gAcel
+      }
     }
-    let xAcel = Math.sin(angle) * gAcel
-    let yAcel = Math.cos(angle) * gAcel
-/*
-    $('#data-1').text('xV:' + this.vector.xV)
-    $('#data-2').text('yV:' + this.vector.yV)
-    $('#data-3').text('xDist:' + xDist)
-    $('#data-4').text('yDist:' + yDist)
-    $('#data-5').text('angle:' + angle)
-*/
+    // })
+
+    // $('#data-1').text('xV:' + this.vector.xV)
+    // $('#data-2').text('yV:' + this.vector.yV)
+    // $('#data-3').text('xDist:' + xDist)
+    // $('#data-4').text('xAcel:' + yAcel)
+    // // $('#data-5').text('angle:' + angle)
+
     const interval = (Date.now() - this.lastUpdated)/1000
     this.vector.xV += xAcel*interval
     this.vector.yV += yAcel*interval
