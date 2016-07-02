@@ -5,20 +5,32 @@ export default class View {
   constructor() {
     this.scene = new THREE.Scene()
     this.camera = new THREE.PerspectiveCamera( 75, $('#draw-window').width() / $('#draw-window').height(), 0.1, 3000 )
+    // this.camera = new THREE.CubeCamera(1, 3000, 128)
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize( $('#draw-window').width(), $('#draw-window').height() )
     $('#draw-window').append( this.renderer.domElement )
     this.ufo = {}
     this.camera.position.z = 1000
-    const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-    //this.scene.add( light );
+    const light = []
+    light[0] = new THREE.PointLight( 0xffffff, 1 , 0)
+    light[0].position.set( 0, 200, 0 )
+
+    light[1] = new THREE.PointLight( 0xffffff, 1 , 0)
+    light[1].position.set( 100, 200, 600 )
+
+    light[2] = new THREE.PointLight( 0xffffff, 1 , 0)
+    light[2].position.set( -100, -200, -100 )
+    // const light = new THREE.AmbientLight( 0xffffff )
+    this.scene.add( light[0] )
+    this.scene.add( light[1] )
+    this.scene.add( light[2] )
     // this.camera.rotation.x = .5;
   }
   create (model) {
     console.log("creating ufo", model.name)
     
     const geometry = new THREE.SphereGeometry( model.size, 32, 32 );
-    const material = new THREE.MeshBasicMaterial( { color:  0x156289 } );
+    const material = new THREE.MeshPhongMaterial( { color:  0x156289 } );
     const ufo = new THREE.Mesh( geometry, material );
     this.scene.add( ufo );
 
