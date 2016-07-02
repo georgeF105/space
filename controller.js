@@ -13,10 +13,11 @@ export default class Controller {
     let halfWidth = $('#draw-window').width()/2
     let halfHeight = $('#draw-window').height()/2
     console.log('halfHeight',halfHeight)
-    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight - 200,xV:35,yV:0 }, 100, 15, '#00effe', 'the_earth'))
-    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight - 200,xV:0,yV:35 }, 100, 15, '#00effe', 'the_earth2'))
-    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight + 200,xV:-35,yV:0 }, 100, 15, '#00effe', 'the_earth3'))
-    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight + 200,xV:0,yV:-35 }, 100, 15, '#00effe', 'the_earth4'))
+    this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 800, 100, '#00effe', 'the_sun'))
+    this.ufos.push(new Ufo({x:0,y:500,xV:80,yV:0 }, 100, 30, '#00effe', 'the_earth'))
+    // this.ufos.push(new Ufo({x:+200,y:-200,xV:0,yV:35 }, 100, 15, '#00effe', 'the_earth2'))
+    this.ufos.push(new Ufo({x:0,y:600,xV:150,yV:0 }, 10, 10, '#00effe', 'the_moon'))
+    // this.ufos.push(new Ufo({x:-200,y:+200,xV:0,yV:-35 }, 100, 15, '#00effe', 'the_earth4'))
 
     this.ufos.forEach(function(ufo){
       v.create(ufo)
@@ -40,5 +41,11 @@ export default class Controller {
     // this.view.render(this.sun)
     // this.view.render(this.planet)
     // this.view.render(this.planet2)
+  }
+  zoomIn(){
+    this.view.zoomIn()
+  }
+  zoomOut(){
+    this.view.zoomOut()
   }
 }

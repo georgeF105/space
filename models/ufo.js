@@ -9,7 +9,7 @@ export default class Ufo {
     this.colour = colour
     this.name = name
     this.id = 'ufo-' + name
-    this.GRAV_CONST = 3000 //???
+    this.GRAV_CONST = 5000 //???
   }
   getXPosition(){
     return this.vector.x
