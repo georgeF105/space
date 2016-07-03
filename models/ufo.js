@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 export default class Ufo {
-  constructor(initalVector, mass, size, colour, name){
+  constructor(initalVector, mass, size, colour, name, type){
     this.vector = initalVector //{x:_, y:_, xV:_, xV:_, yV:_}
     this.lastUpdated = Date.now() //milli seconds
     this.mass = mass
@@ -9,7 +9,8 @@ export default class Ufo {
     this.colour = colour
     this.name = name
     this.id = 'ufo-' + name
-    this.GRAV_CONST = 5000 //???
+    this.GRAV_CONST = 1000 //???
+    this.type = type
   }
   getXPosition(){
     return this.vector.x
@@ -48,7 +49,7 @@ export default class Ufo {
     // $('#data-4').text('xAcel:' + yAcel)
     // // $('#data-5').text('angle:' + angle)
 
-    const interval = (Date.now() - this.lastUpdated)/1000
+    const interval = (Date.now() - this.lastUpdated) / 500
     this.vector.xV += xAcel*interval
     this.vector.yV += yAcel*interval
     this.vector.x += (interval * this.vector.xV)
