@@ -40,7 +40,7 @@ export default class Controller {
         this.ufos.push(new Ufo({x:0,y:-250,xV:-30,yV:0 }, 5, 5, '#00effe', 'astroid4', 'astroid'))
         break
       default:
-                this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 100, '#00effe', 'the_earth', 'earth'))
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 100, '#00effe', 'the_earth', 'earth'))
         break
     }
     this.ufos.forEach(function(ufo){
