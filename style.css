@@ -5,7 +5,6 @@ body{
 
 main{
   position: fixed;
-  /*display: none;*/
 }
 
 .header{
@@ -13,83 +12,18 @@ main{
   margin-right: auto;
   color: white;
   font-family: "Helvetica";
-  /*z-index: 2;*/
+  width: 100vw;
+  display: flex;
 }
 
-.header > h1 {
+h1 {
   font-size: 40px;
   text-shadow: -1px -1px 4px lightblue;
   margin-left: auto;
   margin-right: auto;
 }
 
-.container{
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 canvas {
   width: 100%; 
-  height: 100% 
-  z-index:3;
-}
-
-.space-window{
-  width: 100%;
-  /*height: 1100px;*/
-  /*border: 1px solid white;*/
-  /*box-shadow: inset 2px 2px 10px lightblue;*/
-  border-radius: 5px;
-  /*margin-top: -15px;*/
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.window{
-  position: relative;
-  width:100%;
-  height:100%;
-}
-
-.ufo{
-  z-index: 1;
-  position: absolute;
-  border-radius: 50%;
-  /*border: 1px outset white;*/
-  box-shadow: 2px 2px 15px white, inset 1px 1px 10px white;
-}
-
-#ufo-the_sun{
-  width:50px;
-  height:50px;
-  /*border:2px solid yellow;*/
-/*  left: 225px;
-  top: 225px;*/
-  background: yellow;
-}
-
-#ufo-the_earth{
-  width:10px;
-  height:10px;
-  /*border:2px solid green;*/
-  background: green;
-/*  left: 100px;
-  top: 100px;*/
-}
-
-#data-1{
-  display: none;
-}
-#data-2{
-  display: none;
-}
-#data-3{
-  display: none;
-}
-#data-4{
-  display: none;
-}
-#data-5{
-  display: none;
+  height: 100%;
 }

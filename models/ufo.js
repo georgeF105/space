@@ -9,7 +9,7 @@ export default class Ufo {
     this.colour = colour
     this.name = name
     this.id = 'ufo-' + name
-    this.GRAV_CONST = 1000 //???
+    this.GRAV_CONST = 1000
     this.type = type
   }
   getXPosition(){
@@ -24,8 +24,6 @@ export default class Ufo {
     const yPos = this.vector.y
     let xAcel = 0
     let yAcel = 0
-    //let ufo = ufos[0]
-    // ufos.forEach(function(ufo){
     for(let i = 0; i < ufos.length; i++){
       let ufo = ufos[i]
       if(!(ufo.vector.x == xPos && ufo.vector.y == yPos)){
@@ -41,13 +39,6 @@ export default class Ufo {
         yAcel += Math.cos(angle) * gAcel
       }
     }
-    // })
-
-    // $('#data-1').text('xV:' + this.vector.xV)
-    // $('#data-2').text('yV:' + this.vector.yV)
-    // $('#data-3').text('xDist:' + xDist)
-    // $('#data-4').text('xAcel:' + yAcel)
-    // // $('#data-5').text('angle:' + angle)
 
     const interval = (Date.now() - this.lastUpdated) / 500
     this.vector.xV += xAcel*interval
