@@ -9,36 +9,58 @@ export default class Controller {
     this.view = new View()
     const v = this.view
     this.ufos = []
-    // this.ufos.push(new Ufo({x:250,y:250,xV:0,yV:0}, 100, 50, '#f78303', 'the_sun'))
     let halfWidth = $('#draw-window').width()/2
     let halfHeight = $('#draw-window').height()/2
     console.log('halfHeight',halfHeight)
-    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight - 200,xV:35,yV:0 }, 100, 15, '#00effe', 'the_earth'))
-    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight - 200,xV:0,yV:35 }, 100, 15, '#00effe', 'the_earth2'))
-    this.ufos.push(new Ufo({x:halfWidth + 200,y:halfHeight + 200,xV:-35,yV:0 }, 100, 15, '#00effe', 'the_earth3'))
-    this.ufos.push(new Ufo({x:halfWidth - 200,y:halfHeight + 200,xV:0,yV:-35 }, 100, 15, '#00effe', 'the_earth4'))
+    var opt = Math.floor(Math.random()*5) + 1
 
+    switch(opt) {
+      case 1:
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 35, '#00effe', 'the_earth', 'earth'))
+        this.ufos.push(new Ufo({x:250,y:0,xV:0,yV:27 }, 5, 5, '#00effe', 'astroid1', 'astroid'))
+        this.ufos.push(new Ufo({x:-250,y:0,xV:0,yV:-27 }, 5, 5, '#00effe', 'astroid3', 'astroid'))
+        break
+      case 2:
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 35, '#00effe', 'the_earth', 'earth'))
+        this.ufos.push(new Ufo({x:250,y:0,xV:0,yV:35 }, 20, 8, '#00effe', 'astroid1', 'moon'))
+        this.ufos.push(new Ufo({x:-500,y:300,xV:40,yV:0 }, 5, 5, '#00effe', 'astroid3', 'astroid'))
+        break
+      case 3:
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 40, '#00effe', 'the_earth', 'earth'))
+        this.ufos.push(new Ufo({x:250,y:0,xV:0,yV:30 }, 5, 5, '#00effe', 'astroid1', 'astroid'))
+        this.ufos.push(new Ufo({x:-250,y:0,xV:0,yV:-30 }, 5, 5, '#00effe', 'astroid2', 'astroid'))
+        this.ufos.push(new Ufo({x:0,y:250,xV:-30,yV:0 }, 5, 5, '#00effe', 'astroid3', 'astroid'))
+        this.ufos.push(new Ufo({x:0,y:-250,xV:30,yV:0 }, 5, 5, '#00effe', 'astroid4', 'astroid'))
+        break
+      case 4:
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 40, '#00effe', 'the_earth', 'earth'))
+        this.ufos.push(new Ufo({x:250,y:0,xV:0,yV:30 }, 5, 5, '#00effe', 'astroid1', 'astroid'))
+        this.ufos.push(new Ufo({x:-250,y:0,xV:0,yV:-30 }, 5, 5, '#00effe', 'astroid2', 'astroid'))
+        this.ufos.push(new Ufo({x:0,y:250,xV:30,yV:0 }, 5, 5, '#00effe', 'astroid3', 'astroid'))
+        this.ufos.push(new Ufo({x:0,y:-250,xV:-30,yV:0 }, 5, 5, '#00effe', 'astroid4', 'astroid'))
+        break
+      default:
+        this.ufos.push(new Ufo({x:0,y:0,xV:0,yV:0 }, 500, 100, '#00effe', 'the_earth', 'earth'))
+        break
+    }
     this.ufos.forEach(function(ufo){
       v.create(ufo)
     })
   }
-  // this.sun.refreshPosition()
   update() {
-    // console.log('this.sun',this.sun)
-    // this.sun.refreshPosition()
     const v = this.view
     const ufos = this.ufos
+    v.update()
     for(let i = 0; i < this.ufos.length; i++){
-    // this.ufos.forEach(function(ufo, index){
       let ufo = this.ufos[i]
       ufo.refreshPosition(ufos)
       v.render(ufo)
     }
-    // })
-    // this.planet.refreshPosition(this.sun)
-    // this.planet2.refreshPosition(this.sun)
-    // this.view.render(this.sun)
-    // this.view.render(this.planet)
-    // this.view.render(this.planet2)
+  }
+  zoomIn(){
+    this.view.zoomIn()
+  }
+  zoomOut(){
+    this.view.zoomOut()
   }
 }
